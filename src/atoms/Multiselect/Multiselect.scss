@@ -1,7 +1,14 @@
 .Multiselect {
+  &__root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px !important;
+    align-items: center;
+  }
+
   &__label {
     font-size: 16px;
     font-weight: 500;
-    margin-right: 12px;
+    margin-right: 10px;
   }
 }

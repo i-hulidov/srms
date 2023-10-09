@@ -1,11 +1,6 @@
 .RestaurantListTable {
-  background-color: #fff !important;
   border-radius: 8px;
-  overflow: hidden;
-
-  &__Wrapper {
-    overflow-x: auto;
-  }
+  width: 100%;
 
   &__HeaderCell {
     font-size: 18px;
@@ -30,6 +25,61 @@
 
   th,
   td {
+    background-color: #fff !important;
     padding: 12px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .RestaurantListTable {
+    border: 0;
+
+    &__Header {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    &__Actions {
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    td[data-label='Actions'] {
+      padding: 6px 12px 0 12px !important;
+    }
+
+    tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: 0.8em;
+      text-align: right;
+
+      &::before {
+        display: inline-block;
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
   }
 }

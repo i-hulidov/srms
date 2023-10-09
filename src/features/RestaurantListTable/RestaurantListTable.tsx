@@ -6,7 +6,6 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  TableCellLayout,
   Spinner,
   Button,
   TableColumnId,
@@ -95,15 +94,15 @@ export const RestaurantListTable: FC<RestaurantListTableProps> = ({ data }) => {
   const rows = sort(getRows())
 
   return (
-    <div className='RestaurantListTable__Wrapper'>
+    <>
       {!!rows?.length ? (
         <Table
           sortable
           arial-label='Default table'
           className='RestaurantListTable'
         >
-          <TableHeader>
-            <TableRow>
+          <TableHeader className='RestaurantListTable__Header'>
+            <TableRow className='RestaurantListTable__Row'>
               {columns.map((column) => (
                 <TableHeaderCell
                   className='RestaurantListTable__HeaderCell'
@@ -117,19 +116,15 @@ export const RestaurantListTable: FC<RestaurantListTableProps> = ({ data }) => {
               ))}
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className='RestaurantListTable__Body'>
             {rows.map(({ item }) => (
               <TableRow key={item.id}>
-                <TableCell>
-                  <TableCellLayout>{item.name}</TableCellLayout>
-                </TableCell>
-                <TableCell>
-                  <TableCellLayout>{item.city}</TableCellLayout>
-                </TableCell>
-                <TableCell style={{ fontWeight: 500 }}>
+                <TableCell data-label='Name'>{item.name}</TableCell>
+                <TableCell data-label='City'>{item.city}</TableCell>
+                <TableCell data-label='Rating' style={{ fontWeight: 500 }}>
                   {item.rating.toFixed(1)}
                 </TableCell>
-                <TableCell>
+                <TableCell data-label='Actions'>
                   <div className='RestaurantListTable__Actions'>
                     <Button
                       icon={<Eye24Filled />}
@@ -161,6 +156,6 @@ export const RestaurantListTable: FC<RestaurantListTableProps> = ({ data }) => {
         restaurant={restaurantDetails}
         onClose={() => showRestaurantDetails(null)}
       />
-    </div>
+    </>
   )
 }
