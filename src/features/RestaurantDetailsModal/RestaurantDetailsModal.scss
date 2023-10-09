@@ -1,0 +1,18 @@
+.RestaurantDetailsModal {
+  &__Content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__Info {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  &__Label {
+    font-weight: 500;
+    margin-right: 4px;
+  }
+}

@@ -1,0 +1,35 @@
+.RestaurantListTable {
+  background-color: #fff !important;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__Wrapper {
+    overflow-x: auto;
+  }
+
+  &__HeaderCell {
+    font-size: 18px;
+    font-weight: bold !important;
+  }
+
+  &__WrappedCell {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 180px;
+    white-space: nowrap;
+  }
+
+  &__Actions {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__Spinner {
+    padding: 12px;
+  }
+
+  th,
+  td {
+    padding: 12px !important;
+  }
+}

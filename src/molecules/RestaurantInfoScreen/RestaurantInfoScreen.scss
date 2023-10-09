@@ -1,0 +1,19 @@
+.RestaurantInfoScreen {
+  &__Content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px !important;
+  }
+
+  &__Info {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  &__Label {
+    font-weight: 500;
+    margin-right: 4px;
+  }
+}
