@@ -1,0 +1,13 @@
+.Select {
+  &__root {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 12px;
+  }
+}
