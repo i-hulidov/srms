@@ -26,6 +26,7 @@ export const Multiselect: FC<MultiselectProps> = ({
         aria-labelledby={comboId}
         multiselect={true}
         placeholder={placeholder}
+        className="Multiselect__dropdown"
         {...props}
       >
         {options.map((option) => (

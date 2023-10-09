@@ -1,10 +1,22 @@
-import { useState } from 'react'
-import { useGetUsersAPI } from '../../api/restaurants/getRestaurants/useGetRestaurantsApi.ts'
+import { useCallback, useEffect, useState } from 'react'
+import debounce from 'lodash.debounce'
+import { useGetRestaurantsAPI } from '../../api/restaurants/getRestaurants/useGetRestaurantsApi.ts'
 
 export const useRestaurantsList = () => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
-  const { restaurants } = useGetUsersAPI({ selectedOptions })
+  const { isLoading, restaurants, getRestaurants } = useGetRestaurantsAPI({
+    selectedOptions
+  })
 
-  return { restaurants, selectedOptions, setSelectedOptions }
+  const makeRequest = useCallback(
+    debounce(getRestaurants, 500, { leading: false, trailing: true }),
+    [getRestaurants]
+  )
+
+  useEffect(() => {
+    makeRequest()
+  }, [makeRequest, selectedOptions])
+
+  return { restaurants, selectedOptions, setSelectedOptions, isLoading }
 }

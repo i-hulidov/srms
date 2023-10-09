@@ -1,3 +1,4 @@
+import qs from 'qs'
 import {
   QueryRequestFunction,
   SuccessResponse,
@@ -25,6 +26,7 @@ export const getRestaurants: QueryRequestFunction<
       params: {
         selectedOptions
       },
-      // paramsSerializer: (params) => qs.stringify(params)
+      paramsSerializer: (params) =>
+        qs.stringify(params, { arrayFormat: 'repeat' })
     })
   }

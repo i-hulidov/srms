@@ -8,8 +8,11 @@ import { useRestaurantsList } from './useRestaurantsList.ts'
 import './RestaurantList.scss'
 import { AddRestaurantModal } from '../../features/AddRestaurantModal/AddRestaurantModal.tsx'
 import { useAddRestaurantModal } from '../../features/AddRestaurantModal/useAddRestaurantModal.ts'
+import { useScreenSize } from '../../hooks/useScreenSize.ts'
+import { Add24Filled } from '@fluentui/react-icons'
 
 export const RestaurantList: FC = () => {
+  const { isMobile } = useScreenSize()
   const { restaurants, selectedOptions, setSelectedOptions } =
     useRestaurantsList()
 
@@ -31,9 +34,10 @@ export const RestaurantList: FC = () => {
           <Button
             shape='circular'
             style={{ borderRadius: '8px' }}
+            icon={isMobile ? <Add24Filled /> : null}
             onClick={() => addRestaurant(true)}
           >
-            Add New Restaurant
+            {isMobile ? '' : 'Add New Restaurant'}
           </Button>
         </div>
         <RestaurantListTable data={restaurants} />

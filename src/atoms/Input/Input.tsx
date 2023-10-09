@@ -4,7 +4,8 @@ import {
   shorthands,
   useId,
   Input as FUIInput,
-  Label
+  Label,
+  tokens
 } from '@fluentui/react-components'
 import type { InputProps as FUIInputProps } from '@fluentui/react-components'
 import { useField } from 'formik'
@@ -19,6 +20,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     ...shorthands.gap('2px')
+  },
+  error: {
+    color: tokens.colorStatusDangerForeground1
   }
 })
 
@@ -38,7 +42,7 @@ export const Input = ({ label, name, ...props }: InputProps) => {
         {label}
       </Label>
       <FUIInput id={inputId} {...props} {...field} onFocus={handleFocus} />
-      {hasError && <div>{meta.error}</div>}
+      {hasError && <div className={styles.error}>{meta.error}</div>}
     </div>
   )
 }

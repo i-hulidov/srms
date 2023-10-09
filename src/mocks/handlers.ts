@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-let restaurantsData = [
+export let restaurantsData = [
   {
     id: 1,
     name: 'Boston Kitchen Pizza',
@@ -164,8 +164,17 @@ let restaurantsData = [
 ]
 
 export const handlers = [
-  rest.get('*/restaurants', (_req, res, ctx) => {
-    return res(ctx.delay(1000), ctx.status(200), ctx.json(restaurantsData))
+  rest.get('*/restaurants', async (req, res, ctx) => {
+    let response = restaurantsData
+    const filterCities = req.url.searchParams.getAll('selectedOptions')
+
+    if (filterCities.length > 0) {
+      response = restaurantsData.filter((restaurant) =>
+        filterCities.includes(restaurant.city)
+      )
+    }
+
+    return res(ctx.delay(1000), ctx.status(200), ctx.json(response))
   }),
   rest.post('*/restaurants', async (req, res, ctx) => {
     const newRestaurant = await req.json()
