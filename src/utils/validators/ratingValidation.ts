@@ -6,6 +6,6 @@ export const ratingValidation = Yup.number()
   .max(5, 'Rating should be not greater than 5')
   .test(
     'is-decimal',
-    'invalid decimal',
-    (value) => !!String(value).match(/^\d*\.{1}\d*$/)
+    'Rating must have 1 digit after decimal or less',
+    (number) => /^\d+(\.\d{1})?$/.test(String(number))
   )
