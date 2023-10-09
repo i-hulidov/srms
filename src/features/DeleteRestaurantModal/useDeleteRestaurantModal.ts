@@ -4,6 +4,10 @@ import { RestaurantEntityType } from '../../api/restaurants/types.ts'
 import { QUERY_CACHE_KEYS } from '../../api/cacheKeys.ts'
 import { useDeleteRestaurantApi } from '../../api/restaurants/deleteRestaurant/useDeleteRestaurantApi.ts'
 
+const filters = {
+  refetchInactive: true
+}
+
 export const useDeleteRestaurantModal = () => {
   const queryClient = useQueryClient()
   const [selectedRestaurant, setSelectedRestaurant] =
@@ -11,7 +15,7 @@ export const useDeleteRestaurantModal = () => {
 
   const { deleteRestaurant } = useDeleteRestaurantApi({
     onSuccess: () => {
-      queryClient.invalidateQueries(QUERY_CACHE_KEYS.restaurants)
+      queryClient.invalidateQueries(QUERY_CACHE_KEYS.restaurants, filters)
       setSelectedRestaurant(null)
     }
   })

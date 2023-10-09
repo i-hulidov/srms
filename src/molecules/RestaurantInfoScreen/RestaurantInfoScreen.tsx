@@ -70,7 +70,6 @@ export const RestaurantInfoScreen: FC<RestaurantInfoScreenProps> = ({
                       label='City'
                       placeholder='Select the city'
                     />
-                    {/*<Input label='City' name={RestaurantFields.CITY} />*/}
                     <Input label='Rating' name={RestaurantFields.RATING} />
                     <Textarea
                       label='Description (optional)'

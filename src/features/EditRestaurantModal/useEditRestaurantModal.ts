@@ -18,6 +18,10 @@ const formValuesToRestaurantInfoProps = (
   }
 }
 
+const filters = {
+  refetchInactive: true
+}
+
 export const useEditRestaurantModal = () => {
   const queryClient = useQueryClient()
   const [selectedRestaurant, setSelectedRestaurant] =
@@ -25,7 +29,7 @@ export const useEditRestaurantModal = () => {
 
   const { editRestaurant } = useEditRestaurantAPI({
     onSuccess: () => {
-      queryClient.invalidateQueries(QUERY_CACHE_KEYS.restaurants)
+      queryClient.invalidateQueries(QUERY_CACHE_KEYS.restaurants, filters)
       setSelectedRestaurant(null)
     }
   })

@@ -7,13 +7,17 @@ import {
 import { useAddRestaurantApi } from '../../api/restaurants/addRestaurant/useAddRestaurantApi.ts'
 import { QUERY_CACHE_KEYS } from '../../api/cacheKeys.ts'
 
+const filters = {
+  refetchInactive: true
+}
+
 export const useAddRestaurantModal = () => {
   const queryClient = useQueryClient()
   const [open, setOpen] = useState(false)
 
   const { addRestaurant } = useAddRestaurantApi({
     onSuccess: () => {
-      queryClient.invalidateQueries(QUERY_CACHE_KEYS.restaurants)
+      queryClient.invalidateQueries(QUERY_CACHE_KEYS.restaurants, filters)
       setOpen(false)
     }
   })
