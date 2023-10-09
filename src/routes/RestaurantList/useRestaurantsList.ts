@@ -5,7 +5,7 @@ import { useGetRestaurantsAPI } from '../../api/restaurants/getRestaurants/useGe
 export const useRestaurantsList = () => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
-  const { restaurants, getRestaurants } = useGetRestaurantsAPI({
+  const { isLoading, restaurants, getRestaurants } = useGetRestaurantsAPI({
     selectedOptions
   })
 
@@ -18,5 +18,5 @@ export const useRestaurantsList = () => {
     makeRequest()
   }, [makeRequest, selectedOptions])
 
-  return { restaurants, selectedOptions, setSelectedOptions }
+  return { restaurants, selectedOptions, setSelectedOptions, isLoading }
 }

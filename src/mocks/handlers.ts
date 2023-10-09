@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-let restaurantsData = [
+export let restaurantsData = [
   {
     id: 1,
     name: 'Boston Kitchen Pizza',
